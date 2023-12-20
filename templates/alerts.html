@@ -1,0 +1,10 @@
+{% load static %}
+
+{% for msg in messages %}
+    <div class="alert {{msg.tags}}" id="alert">
+        <img src="{% static 'media/icons/'|add:msg.tags|add:'.svg' %}" class="icon" alt="alert icon" widht="30px">
+        <div class="text">{{msg}}</div>
+        <img src="{% static 'media/icons/close2.svg' %}" class="close" onclick="close_alert()" alt="close icon" width="30px">
+    </div>
+    
+{% endfor %}

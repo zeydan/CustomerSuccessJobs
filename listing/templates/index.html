@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'banner.html' %}
+
+{% include 'filter.html' %}
+
+{% include 'partners.html' %}
+
+<div class="content">
+    
+    <div class="first">
+        <div class="latest-jobs-title">Latest Jobs</div>
+        <div class="cards" id="cards">
+
+            {% include 'cards.html' %}
+
+        </div>
+        <div class="auto-load" id="auto_load"><div class="auto-load-button" onclick="loadDoc()">Load More</div></div>
+    </div>
+    <div class="second">
+        <div class="slider">
+
+            {% include 'side_subscription.html' %}
+
+            {% include 'post_job_box.html' %}
+
+        </div>
+    </div>
+</div>
+
+{% include 'bottom_subscription.html' %}
+
+{% include  'alerts.html' %}
+
+<script>
+    location_val = '{{location}}';
+    company_val = '{{company}}';
+    level_val = '{{level}}';
+    remote_val = '{% if remote %}Remote{% endif %}';
+    offset_val = 10;
+
+    function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("cards").innerHTML += this.responseText;
+            }
+        xhttp.open("GET", "/load_more?offset="+offset_val+"&location=" + location_val + "&company=" + company_val + "&level=" + level_val + "&remote=" + remote_val, true);
+        xhttp.send();
+        offset_val += 10;
+    }
+</script>
+
+{% endblock %}

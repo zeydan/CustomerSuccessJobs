@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="go-back">
+    <div class="frame">
+        <a href="{% url 'index' %}">
+            <img src="{% static 'media/icons/arrow3.svg' %}" alt="arrow icon" width="28px">
+            <div class="text">See all jobs</div>
+        </a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="first">
+        <div class="detail">
+            <img src="{% static 'media/pattern.jpg' %}" alt="pattern background" class="pattern">
+            <img class="company-logo" alt="CS logo" src="{% static 'media/logos/customer-success-jobs.png' %}">
+            <div class="job-title">{{ job.title }}</div>
+            <div class="secondary">
+                <div class="two-row">
+                    <div class="title"><img src="{% static 'media/icons/location2.svg' %}" alt="location icon" width="12px"> Location</div>
+                    <div class="text">{{ job.location }}</div>
+                </div>
+                <div class="two-row">
+                    <div class="title"><img src="{% static 'media/icons/company2.svg' %}" alt="company icon" width="12px"> Company</div>
+                    <div class="text">{{ job.company }}</div>
+                </div>
+                <div class="two-row">
+                    <div class="title"><img src="{% static 'media/icons/calendar.svg' %}" alt="date icon" width="12px"> Date</div>
+                    <div class="text">{{ job.scraping_date }}</div>
+                </div>
+            </div>
+            <hr>
+            <div class="description">
+
+                {% if job.is_old %}
+                    <p style='color:red;'><i>Please notice that this job posting is older than 7 days. It might be deleted by provider site.</i></p><br>
+                {% endif %}
+
+                {{ job.description|safe }}
+
+            </div>
+            <div class="apply-now">
+                <a href="{{ job.url }}" rel="nofollow" class="apply-button">Apply now</a>
+            </div>
+        </div>
+    </div>
+    <div class="second">
+        <div class="slider">
+            {% include 'share_job.html' %}
+        </div>
+    </div>
+</div>
+
+{% include 'bottom_subscription.html' %}
+
+{% endblock %}

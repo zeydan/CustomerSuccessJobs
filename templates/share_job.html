@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="share-job">
+    <div class="title">Share</div>
+    <a target="_blank" href="https://www.linkedin.com/shareArticle/?title=Customer%20Success%20Jobs%20-%20{{ job.get_spaceless_title }}&url=https://customersuccess.jobs/detail/{{ job.get_slug }}" class="company">
+        <img src="{% static 'media/icons/linkedin.png' %}" alt="linkedin logo" class="logo" width="48px">
+        <div class="company-name">Linkedin</div>
+        <img src="{% static 'media/icons/arrow2.svg' %}" alt="arrow icon" class="arrow" width="32px">
+    </a>
+    <a target="_blank" href="https://www.facebook.com/sharer.php?t=Customer%20Success%20Jobs%20-%20{{ job.get_spaceless_title }}&u=https://customersuccess.jobs/detail/{{ job.get_slug }}" class="company">
+        <img src="{% static 'media/icons/facebook.png' %}" alt="facebook logo" class="logo" width="48px">
+        <div class="company-name">Facebook</div>
+        <img src="{% static 'media/icons/arrow2.svg' %}" alt="arrow icon" class="arrow" width="32px">
+    </a>
+    <a target="_blank" href="https://twitter.com/intent/tweet?text=Customer%20Success%20Jobs%20-%20{{ job.get_spaceless_title }}&url=https://customersuccess.jobs/detail/{{ job.get_slug }}" class="company">
+        <img src="{% static 'media/icons/twitter.png' %}" alt="twitter logo" class="logo" width="48px">
+        <div class="company-name">Twitter</div>
+        <img src="{% static 'media/icons/arrow2.svg' %}" alt="arrow icon" class="arrow" width="32px">
+    </a>
+    <a target="_blank" href="whatsapp://send?text=https://customersuccess.jobs/detail/{{ job.get_slug }}" class="company">
+        <img src="{% static 'media/icons/whatsapp.png' %}" alt="whatsapp logo" class="logo" width="48px">
+        <div class="company-name">Whatsapp</div>
+        <img src="{% static 'media/icons/arrow2.svg' %}" alt="arrow icon" class="arrow" width="32px">
+    </a>
+    <a target="_blank" href="mailto:?subject=Customer%20Success%20Jobs%20-%20{{ job.get_spaceless_title }}&body=Check%20out%20this%20job%3A%20https://customersuccess.jobs/detail/{{ job.get_slug }}" class="company">
+        <img src="{% static 'media/icons/email.png' %}" alt="email logo" class="logo" width="48px">
+        <div class="company-name">Email</div>
+        <img src="{% static 'media/icons/arrow2.svg' %}" alt="arrow icon" class="arrow" width="32px">
+    </a>
+</div>

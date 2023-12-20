@@ -1,0 +1,49 @@
+{% load static %}
+
+<div class="filter" id="filter">
+    <div class="frame">
+        <div class="box" style="grid-area: a" onclick="focus_filter_location()">
+            <div class="left">
+                <img src="{% static '/media/icons/location.svg' %}" alt="location icon" class="icon" width="20px">
+                <input type="text" name="" id="filter_location" placeholder="Location"  value="{{ location }}">
+            </div>
+        </div>
+
+        <div class="box" style="grid-area: b" onclick="focus_filter_company()">
+            <div class="left">
+                <img src="{% static '/media/icons/company.svg' %}" alt="company icon" class="icon" width="20px">
+                <input type="text" name="" id="filter_company" placeholder="Company" value="{{ company }}">
+            </div>
+        </div>
+
+        <div class="box" style="grid-area: c" onclick="toggle_level()" onmouseleave="close_level()" onmouseenter="open_level()">
+            <div class="left">
+                <img src="{% static '/media/icons/level.svg' %}" alt="level icon" class="icon" width="20px">
+                <div class="dropdown-button" id="filter_experience_level">{% if level|length > 0 %}{{level}}{% else %}Experience Level{% endif %}</div>
+            </div>
+            <img src="{% static '/media/icons/dropdown.svg' %}" alt="dropdown icon" class="dropdown-icon" width="16px">
+            <div class="dropdown-menu" id="level_dropdown">
+                <div class="items">
+                    <div class="item" onclick="filter_level_check('All Level')">All Level</div>
+                    <div class="item" onclick="filter_level_check('Entry-Level')">Entry-Level</div>
+                    <div class="item" onclick="filter_level_check('Director')">Director</div>
+                    <div class="item" onclick="filter_level_check('Manager')">Manager</div>
+                    <div class="item" onclick="filter_level_check('Senior')">Senior</div>
+                    <div class="item" onclick="filter_level_check('VP')">VP</div>
+                    <div class="item" onclick="filter_level_check('Associate')">Associate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" style="grid-area: d" onclick="filter_remote_switch()">
+            <div class="left">
+                <img src="{% static '/media/icons/home.svg' %}" alt="remote icon" class="icon" width="20px">
+                <div class="dropdown-button">Remote</div>
+            </div>
+            <div class="remote-check" id="filter_remote_checkbox"><img src="{% static '/media/icons/check.svg' %}" alt="check icon"></div>
+            <input type="checkbox" style="display:none;" id="filter_invisible_checkbox" {% if remote %} checked {% endif %}>
+        </div>
+
+        <div class="search-button" style="grid-area: e" onclick="apply_filter()">Search</div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{% load static %}
+
+<div class="bottom-subscription">
+    <div class="frame">
+        <div class="first">
+            <div class="logo">
+                <div class="logo text">Get Job Alerts</div>
+            </div>
+            <div class="description">Sign up for our newsletter to get customer success jobs weekly.</div>
+        </div>
+        <div class="second">
+            <div class="box" onclick="focus_bottom_subscribe_email()">
+                <div class="left">
+                    <img src="{% static 'media/icons/email.svg' %}" alt="email icon" class="icon" width="28px">
+                    <input type="text" name="" id="bottom_subscribe_email" placeholder="Your Email Address">
+                </div>
+                <div class="subscribe-button" onclick="subscribe_open(document.getElementById('bottom_subscribe_email').value)">Sign Up</div>
+            </div>
+            <div class="subscribe-button-mobile" onclick="subscribe_open(document.getElementById('bottom_subscribe_email').value)">Subscribe</div>
+        </div>
+    </div>
+</div>

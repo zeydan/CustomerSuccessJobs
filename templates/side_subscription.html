@@ -1,0 +1,13 @@
+{% load static %}
+
+<div class="side-subscription">
+    <div class="title">Get Job Alerts</div>
+    <div class="text">Sign up for our newsletter to get customer success jobs in terms of your preferences.</div>
+    <div class="box" onclick="focus_side_subscribe_email()">
+        <div class="left">
+            <img src="{% static 'media/icons/email.svg' %}" alt="email icon" class="icon" width="28px">
+            <input type="text" id="side_subscribe_email" placeholder="Your Email Address">
+        </div>
+    </div>
+    <div class="button" onclick="subscribe_open(document.getElementById('side_subscribe_email').value)">Sign Up</div>
+</div>

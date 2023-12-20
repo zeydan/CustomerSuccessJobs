@@ -1,0 +1,35 @@
+{% load static %}
+
+{% for job in jobs %}
+<a href="{{ 'detail/'|add:job.get_slug }}" class="card {% if job.privilege %} privilege {% endif %}">
+    <div class="main">
+        <img class="company-logo" alt="CS logo" src="{% static 'media/logos/customer-success-jobs.png' %}">
+        <div class="two-row">
+            <div class="job-title">{{job.title}}</div>
+            <div class="company-name">{{job.company}}<img src="{% static 'media/icons/arrow.svg' %}" alt="arrow icon" class="arrow"></div>
+        </div>
+    </div>
+    <div class="secondary">
+        <div class="two-row">
+            <div class="title"><img src="{% static 'media/icons/location2.svg' %}" alt="location icon" width="12px"> Location</div>
+            <div class="text">{{job.location}}</div>
+        </div>
+
+        <div class="two-row">
+            <div class="title"><img src="{% static 'media/icons/calendar.svg' %}" alt="date icon" width="12px"> Date</div>
+            <div class="text">{{job.scraping_date}}</div>
+        </div>
+
+    </div>
+
+    {% if job.privilege %}
+        <div class="featured">
+            ⭐️
+        </div>
+    {% endif %}
+</a>
+{% endfor %}
+
+{% if not load_more %}
+    <style>.auto-load{display:none;}</style>
+{% endif %}

@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ meta_description }}">
+    <meta property="og:title" content="{{ page_title }}"/>
+    <meta property="og:image" content="https://customersuccess.jobs/media/customersuccess.jpg"/>
+    <meta property="og:description" content="{{ page_title }}"/>
+    <meta property="og:url" content="{{ share_url }}"/>
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ page_title }}" />
+    <meta name="twitter:description" content="{{ page_title }}"/>
+    <meta name="twitter:image" content="https://customersuccess.jobs/media/customersuccess.jpg"/>
+    <link rel="icon" href="{% static 'media/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>{{ page_title }}</title>
+</head>
+<body>
+    
+
+    {% include 'navbar.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include 'footer.html' %}
+
+    {% include 'subscription.html' %}
+
+    <script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% load static %}
+
+<div class="dark-area" id="dark-area">
+    <div class="subscribe">
+        <img class="close" alt="close icon" width="30px" src="{% static 'media/icons/close.svg' %}" onclick="subscribe_close()">
+        <div class="title">Get Job Alerts</div>
+        <div class="text">Fill out the form based on your preferences and be notified when there is a new posting weekly.</div>
+        <form action="{% url 'subscribe' %}" name="subscribe" method="post" onsubmit="return validation()" autocomplete="off">
+            {% csrf_token %}
+            <div class="box" onclick="focus_subscribe_email()">
+                <div class="left">
+                    <img src="{% static 'media/icons/email2.svg' %}" alt="email icon" class="icon" width="20px">
+                    <input type="email" name="email" id="subscribe_email" placeholder="Your Email (Required)" maxlength="100" required>
+                </div>
+            </div>
+
+            <div class="box" onclick="focus_subscribe_location()">
+                <div class="left">
+                    <img src="{% static 'media/icons/location.svg' %}" alt="location icon" class="icon" width="20px">
+                    <input type="text" name="location" id="subscribe_location" placeholder="Location (Optional)" maxlength="100">
+                </div>
+            </div>
+
+            <div class="box" onclick="toggle_subscribe_level()" onmouseleave="close_subscribe_level()" onmouseenter="open_subscribe_level()">
+                <div class="left">
+                    <img src="{% static 'media/icons/level.svg' %}" alt="level icon" class="icon" width="20px">
+                    <div class="dropdown-button" id="subscribe_experience_level">Experience Level</div>
+                </div>
+                <img src="{% static 'media/icons/dropdown.svg' %}" alt="dropdown icon" class="dropdown-icon" width="16px">
+                <div class="dropdown-menu" id="subscribe_level_dropdown">
+                    <div class="items" id="subscribe_level_dropdown">
+                        <div class="item" onclick="subscribe_level_check('All Level')">All Level</div>
+                        <div class="item" onclick="subscribe_level_check('Entry-Level')">Entry-Level</div>
+                        <div class="item" onclick="subscribe_level_check('Director')">Director</div>
+                        <div class="item" onclick="subscribe_level_check('Manager')">Manager</div>
+                        <div class="item" onclick="subscribe_level_check('Senior')">Senior</div>
+                        <div class="item" onclick="subscribe_level_check('VP')">VP</div>
+                        <div class="item" onclick="subscribe_level_check('Associate')">Associate</div>
+                    </div>
+                </div>
+                <input type="text" name="level" style="display:none;" id="subscribe_invisible_level">
+            </div>
+
+            <div class="box" onclick="subscribe_remote_switch()">
+                <div class="left">
+                    <img src="{% static 'media/icons/home.svg' %}" alt="remote icon" class="icon" width="20px">
+                    <div class="dropdown-button">Remote</div>
+                </div>
+                <div class="remote-check" id="subscribe_remote_checkbox"><img src="{% static 'media/icons/check.svg' %}" alt="check icon"></div>
+                <input type="checkbox" name="remote" style="display:none;" id="subscribe_invisible_checkbox">
+            </div>
+
+            <input class="subscribe-button" onclick="subscribe()" type="submit" value="Subscribe">
+        
+        </form>
+    </div>
+</div>
